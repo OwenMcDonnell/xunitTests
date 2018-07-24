@@ -1,0 +1,60 @@
+"jobScalars": {
+    "type": "object",
+    "not": { 
+      
+        "type": "object",
+        "properties": {
+          "skip_tags": {
+            "type": "boolean"
+          },
+          "skip_branch_with_pr": {
+            "type": "boolean"
+          }
+        
+
+        },
+        "additionalProperties": false
+      
+    },
+    "properties": {
+      "image": {
+        "description": "Build worker image (VM template) -DEV_VERSION",
+        "enum": [
+          "Visual Studio 2013",
+          "Visual Studio 2015",
+          "Visual Studio 2017",
+          "Previous Visual Studio 2013",
+          "Previous Visual Studio 2015",
+          "Previous Visual Studio 2017"
+        ]
+      },
+      "platform": {
+        "description": "Build platform, i.e. x86, x64, Any CPU. This setting is optional",
+        "oneOf": [
+          {
+            "$ref": "#/definitions/platform"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/platform"
+            }
+          }
+        ]
+      },
+      "configuration": {
+        "description": "Build Configuration, i.e. Debug, Release, etc.",
+        "oneOf": [
+          {
+            "$ref": "#/definitions/configuration"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/configuration"
+            }
+          }
+        ]
+      }
+    }
+  },

@@ -1,0 +1,65 @@
+
+version: 1.0.{build}
+
+environment:
+  
+  global:
+    var5: test
+  second_var:
+    secure: asdfasdf
+  secure_var:
+    secure: sdfgsdfg
+  regular: asdfasdf
+  var1: test
+  env_var: test
+  var3: asdfasdf
+  matrix:
+    - matrix_var1: test
+    - matrix_var2: test
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - skip_tags: true
+      env_var: random
+      image: Visual Studio 2013
+    - image: Visual Studio 2015
+      skip_tags_: false
+      var3: test
+    - example: true
+    - example: false
+    - skip_tags: true
+      skip_branch_with_pr: true
+    - skip_tags: true
+    - test: Visual
+
+
+
+
+      
+      
+configuration:
+  - Debug
+  - Release
+
+for:
+  -
+    matrix:
+      only:
+        - configuration: Debug
+    build_script:
+      - ps: "Debug build script"
+
+  -
+    matrix:
+      only:
+        - configuration: release
+    build_script:
+      - echo "Test build script"
+
+
+
+
+
+skip_tags: true
+
