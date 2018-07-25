@@ -141,11 +141,28 @@
           ]
         }
       },
-      "not": {
-        "required": [
-          "skip_tags", "skip_branch_with_pr"
-        ]
-      }
+      "allOf": [
+        {
+          "not": {
+            "required": ["skip_tags"]
+          } 
+        },
+        {
+          "not": {
+            "required": ["skip_commits"]
+          } 
+        },
+        {
+          "not": {
+            "required": ["skip_branch_with_pr"]
+          } 
+        },
+        {
+          "not": {
+            "required": ["skip_non_tags"]
+          } 
+        }
+      ]
     },
     "job": {
       "properties": {
@@ -661,10 +678,13 @@
             }
           }
         }
-      },
-      "allOf": [
-        {
-          "$ref": "#/definitions/job"
-        }
-      ]
+      }
+     
     }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/job"
+    }
+  ]
+}
