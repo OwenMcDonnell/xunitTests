@@ -1,6 +1,8 @@
 version: 1.0.{build}
 
+
 environment:
+
   
   global:
     var5: test
@@ -14,8 +16,7 @@ environment:
   var3: asdfasdf
   matrix:
     - matrix_var1: test
-    - matrix_var2: test
-     
+    - matrix_var2: test  
 
 matrix:
   fast_finish: true
